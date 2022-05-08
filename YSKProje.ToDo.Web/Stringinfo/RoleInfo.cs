@@ -31,6 +31,7 @@ namespace YSKProje.ToDo.Web.Stringinfo
         public const string Profil = "Profil";
         public const string qrafik = "qrafik";
         public const string vaciblik = "vaciblik";
+        public const string isciler = "Isciler";
 
 
     }
