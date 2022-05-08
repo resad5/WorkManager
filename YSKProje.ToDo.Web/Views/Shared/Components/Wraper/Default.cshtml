@@ -1,0 +1,41 @@
+﻿
+@model AppUserListDTO
+
+@{
+
+    string active = string.Empty;
+    if (TempData["Active"] != null)
+    {
+        active = TempData["Active"].ToString();
+    }
+}
+
+    <div class="border border-right" id="sidebar-wrapper">
+        <div class="sidebar-heading">
+        <img  src="~/img/@Model.Picture" class="w-100 img-thumbnail" style="height:10rem!important"/>
+        </div>
+        <div class="list-group list-group-flush">
+            <a asp-action="Index" asp-controller="Home" class="list-group-item list-group-item-action @(active=="EsasSeyife"?"active":"") "><i class="fas fa-home mr-2"> </i>Əsas Səyifə</a>
+            <a asp-action="Index" asp-controller="IS" class="list-group-item list-group-item-action @(active=="is"?"active":"")"><i class="fas fa-tasks mr-2"> </i>İs prosedurlar</a>
+            <a asp-action="Index" asp-controller="Vaciblik" class="list-group-item list-group-item-action  @(active=="vaciblik"?"active":"")"><i class="fas fa-exclamation mr-2"> </i>Vaciblik prosedurlr</a>
+            <a asp-action="Index" asp-controller="İsEmirleri" class="list-group-item list-group-item-action  @(active=="İsEmirleri"?"active":"") "><i class="fas fa-file mr-2"> </i>İs emirleri</a>
+            <a asp-action="Index" asp-controller="Qrafik" class="list-group-item list-group-item-action @(active=="qrafik"?"active":"")"><i class="fas fa-chart-pie mr-2"> </i>Qrafikler</a>
+
+            <a asp-action="Index" asp-controller="Bildiris" class="list-group-item list-group-item-action position-relative  @(active=="Bildiris"?"active":"") ">
+                <i class="fas fa-bell mr-2"> </i>
+                @if (ViewBag.BildirisSayi > 0)
+                {
+                    <sub class="badge badge-info badge-pill position-absolute" style="bottom:0.625rem!important; left:1.7rem!important;">
+                        <small>@((int)ViewBag.BildirisSayi)</small>
+                    </sub>
+                }
+
+                Bildirisler
+            </a>
+
+            <a asp-action="Isciler" asp-controller="İsEmirleri" class="list-group-item list-group-item-action @(active=="Isciler"?"active":"")"><i class="fas fa-user mr-2"> </i>Isciler</a>
+
+            <a asp-action="Index" asp-controller="Profil" class="list-group-item list-group-item-action @(active=="Profil"?"active":"")"><i class="fas fa-user mr-2"> </i>Profilim</a>
+            <a asp-area="" asp-action="Cixis" asp-controller="Home" class="list-group-item list-group-item-action "><i class="fas fa-sign-out-alt mr-2"> </i>Cixis</a>
+        </div>
+    </div>

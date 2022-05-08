@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="row">
+    <div class="col-md-6">
+        <div id="piechart_3d" class="w-100" style=" height: 500px;"></div>
+    </div>
+    <div class="col-md-6">
+        <div id="piechart" class="w-100" style=" height: 500px;"></div>
+    </div>
+
+</div>
+
+
+
+@section JavaScript{
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+            let enCoxIsTamamlayan = [['Isci adi', 'Is sayi']];
+
+            $.ajax({
+                type: "Get",
+                url: "./Qrafik/EnCoxIsTamamlayan",
+                async: false,
+                success: function (data) {
+                    let gelenObj = jQuery.parseJSON(data);
+                    $.each(gelenObj, (index, value) => {
+
+                        enCoxIsTamamlayan.push([value.Ad, value.IsSayi]);
+                    });
+                }
+            })
+
+
+
+
+            var data = google.visualization.arrayToDataTable(enCoxIsTamamlayan );
+
+            var options = {
+                title: 'En cox is tamamlayan isciler'
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+            chart.draw(data, options);
+        }
+
+
+
+
+
+        google.charts.load("current", { packages: ["corechart"] });
+        google.charts.setOnLoadCallback(drawChart2);
+        function drawChart2() {
+            let enCoxIsdeIsleyen = [['Isci adi', 'Is sayi']];
+
+            $.ajax({
+                type: "Get",
+                url: "./Qrafik/EnCoxIsdeIsleyen",
+                async: false,
+                success: function (data) {
+                    let gelenObj2 = jQuery.parseJSON(data);
+                    $.each(gelenObj2, (index, value) => {
+
+                        enCoxIsdeIsleyen.push([value.Ad, value.IsSayi]);
+                    });
+                }
+            })
+
+
+
+            var data = google.visualization.arrayToDataTable( enCoxIsdeIsleyen);
+
+            var options = {
+                title: 'Hal hazirda isleyen isciler',
+                is3D: true,
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+            chart.draw(data, options);
+        }
+
+    </script>
+
+
+
+
+}
+

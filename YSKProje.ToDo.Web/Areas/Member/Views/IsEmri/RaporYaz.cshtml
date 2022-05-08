@@ -1,0 +1,50 @@
+﻿@model RaporAddDTO
+@{
+    ViewData["Title"] = "RaporYaz";
+    Layout = "~/Areas/Member/Views/Shared/_MemberLayout.cshtml";
+}
+
+
+<div class="card text-white bg-primary mv-3" >
+    <div class="card-header">@Model.Is.Ad</div>
+    <div class="card-body">
+        <h4 class="card-title">Vaciblik: @Model.Is.Vaciblik.Ifade</h4>
+        <p class="card-text">  @Model.Is.Aciklama </p>
+    </div>
+</div>
+
+<form asp-action="RaporYaz" method="post" class="  p-3 ">
+
+
+    
+       
+    <input type="hidden" asp-for="IsId" />
+
+    <div class="form-group">
+        <label asp-for="Tanim">Basliq:</label>
+        <span asp-validation-for="Tanim" class="text-danger"></span>
+        <input asp-for="Tanim" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Detay">Detay:</label>
+        <span asp-validation-for="Detay" class="text-danger"></span>
+        <textarea asp-for="Detay" class="form-control"></textarea>
+    </div>
+
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <a asp-action="Index" class="btn btn-warning btn-sm"><i class="fas fa-chevron-circle-left mr-2"></i>Legv et</a>
+        <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-check-circle mr-2"></i>Elave et</button>
+    </div>
+
+
+
+</form>
+
+
+@section JavaScript{
+    <script src="~/lib/jqueryValidate/jquery.validate.min.js"></script>
+    <script src="~/lib/jqueryUnob/jquery.validate.unobtrusive.min.js"></script>
+}

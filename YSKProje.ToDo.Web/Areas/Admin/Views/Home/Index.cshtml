@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row mt-3">
+    <div class="col-md-6">
+        <div class="card text-white bg-primary mb-3 text-center">
+
+            <div class="card-body">
+                <h4 class="card-title">Oxunmamis bildirislerin sayi</h4>
+                @if (@ViewBag.OxunmamisBildirisSayi > 0)
+                {
+                    <p class="card-text display-4">@ViewBag.OxunmamisBildirisSayi </p>
+                    <p>
+                        <a asp-action="Index" asp-controller="Bildiris" class="btn btn-light btn-sm"><i class="fas fa-chevron-circle-right "></i>Clikleyin </a>
+                    </p>
+
+                }
+                else
+                {
+                    <p class="card-text lead">Yeni bildiris yoxdur</p>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card text-white bg-primary mb-3 text-center">
+
+            <div class="card-body">
+                <h4 class="card-title">Uzerinde islenilmeyen is sayi</h4>
+                @if (@ViewBag.IsciGozleyen > 0)
+                {
+                    <p class="card-text display-4">@ViewBag.IsciGozleyen </p>
+                    <p>
+                        <a asp-action="Index" asp-controller="İsEmirleri" class="btn btn-light btn-sm"><i class="fas fa-chevron-circle-right "></i>Clikleyin </a>
+                    </p>
+                }
+                else
+                {
+                    <p class="card-text lead">Butun isler uzerinde isciler isleyir yada yeni bir is yoxdur</p>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card text-white bg-primary mb-3 text-center">
+
+            <div class="card-body">
+                <h4 class="card-title">Yekunlasmis islerin sayi</h4>
+                @if (@ViewBag.tamamlanmisIsSayi > 0)
+                {
+                    <p class="card-text display-4">@ViewBag.tamamlanmisIsSayi </p>
+                    <p>
+                        <a asp-action="Index" asp-controller="İsEmirleri" class="btn btn-light btn-sm"><i class="fas fa-chevron-circle-right "></i>Clikleyin </a>
+                    </p>
+                }
+                else
+                {
+                    <p class="card-text lead">Hal hazirda yekunlasib sona catmis is yoxdur</p>
+                }
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="col-md-6">
+        <div class="card text-white bg-primary mb-3 text-center">
+
+            <div class="card-body">
+                <h4 class="card-title">Yazilmis butun bildirislerin sayi</h4>
+                @if (@ViewBag.ButunRaporSayi > 0)
+                {
+                    <p class="card-text display-4">@ViewBag.ButunRaporSayi </p>
+
+                }
+                else
+                {
+                    <p class="card-text lead">Yazilan rapor yoxdur</p>
+                }
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>
+

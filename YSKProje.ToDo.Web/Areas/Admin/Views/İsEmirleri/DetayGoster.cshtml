@@ -1,0 +1,35 @@
+﻿@model IsListAllDTO
+@{
+    ViewData["Title"] = "DetayGoster";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@if (Model.Rapors.Count != 0)
+{
+<a asp-action="GetirExcel" asp-route-id="@Model.Id" target="_blank" class="btn btn-info my-2 mr-2 btn-sm"><i class="fas fa-file-excel mr-2"></i> Excellde goster</a>
+    <a asp-action="GetirPdf" asp-route-id="@Model.Id" target="_blank" class="btn btn-info my-2 mr-2 btn-sm"><i class="fas fa-file-pdf mr-2"></i>Pdf ver</a>
+    <table class="table table-hover table-sm text-center table-bordered ">
+        <tr>
+            <th colspan="2"> @Model.AppUser.Name @Model.AppUser.Surname iscinizin  @Model.Ad isine yazdigi raporlar</th>
+        </tr>
+        <tr>
+            <th>Tanim</th>
+            <th>Detay</th>
+        </tr>
+
+        @foreach (var rapor in Model.Rapors)
+        {
+            <tr>
+                <td>@rapor.Tanim</td>
+                <td>@rapor.Detay</td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <div class="border border-dark mt-2 text-center">
+        @Model.AppUser.Name @Model.AppUser.Surname isciniz  indi @Model.Ad  isi uzerinde calisir.Heleki bir rapor yazmayib
+    </div>
+}
+
