@@ -151,7 +151,9 @@ namespace YSKProje.ToDo.Web.Areas.Admin.Controllers
 
         public IActionResult Isciler()
         {
-          var isciler= _maper.Map<List<AppUserListDTO>>(_appUserService.GetirAdminOlmayanlarHamisi());
+            TempData["Active"] = TempDataInfo.isciler;
+
+            var isciler= _maper.Map<List<AppUserListDTO>>(_appUserService.GetirAdminOlmayanlarHamisi());
          
             return View(isciler);
         }
