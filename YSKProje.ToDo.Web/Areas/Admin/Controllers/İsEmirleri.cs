@@ -46,6 +46,7 @@ namespace YSKProje.ToDo.Web.Areas.Admin.Controllers
            
         }
 
+     
         public IActionResult GetirPdf(int id)
         {
             var path = _dosyaService.AktPdf(_maper.Map<List<RaporFileDTO>>( _isService.GetirRaporlarileId(id).Rapors));
@@ -149,13 +150,17 @@ namespace YSKProje.ToDo.Web.Areas.Admin.Controllers
 
 
 
-        public IActionResult Isciler()
+        public IActionResult Isciler(string s, int sayfa = 1)
         {
+            ViewBag.Axrarilan = s;
+
+            ViewBag.AktivSeyife = sayfa;
             TempData["Active"] = TempDataInfo.isciler;
 
-            var isciler= _maper.Map<List<AppUserListDTO>>(_appUserService.GetirAdminOlmayanlarHamisi());
-         
-            return View(isciler);
+            var personeller = _maper.Map<List<AppUserListDTO>>(_appUserService.GetirAdminOlmayanlar(out int toplamSeyife, s, sayfa));
+            ViewBag.ToplamSeyife = toplamSeyife;
+
+            return View(personeller);
         }
         
 

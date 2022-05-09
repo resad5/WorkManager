@@ -99,34 +99,6 @@ namespace YSKProje.ToDo.DataAccess.Concrete.EntityFrameworkCore.Repositories
 
         }
 
-        public List<AppUser> GetirAdminOlmayanlarHamisi()
-        {
-            using var context = new TodoContext();
-
-            var result = context.Users.Join(context.UserRoles, user => user.Id, userRole => userRole.UserId, (resultUser, resultUserRole) => new
-            {
-                user = resultUser,
-                userRole = resultUserRole
-            }).Join(context.Roles, twoTableResult => twoTableResult.userRole.RoleId, role => role.Id, (ResultTable, resultRole) => new
-            {
-
-                user = ResultTable.user,
-                userRoles = ResultTable.userRole,
-                roles = resultRole
-
-            }).Where(I => I.roles.Name == "Member").Select(I => new AppUser
-            {
-                Name = I.user.Name,
-                Surname = I.user.Surname,
-                Email = I.user.Email,
-                Picture = I.user.Picture,
-                UserName = I.user.UserName,
-                Id = I.user.Id,
-
-
-            }).ToList();
-
-            return result;
-        }
+       
     }
 }

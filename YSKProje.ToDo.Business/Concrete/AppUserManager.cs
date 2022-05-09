@@ -25,10 +25,7 @@ namespace YSKProje.ToDo.Business.Concrete
           return  _appUserDal.GetirAdminOlmayanlar(out toplamSeyife, axtarilacaqsoz,aktivseyife);
         }
 
-        public List<AppUser> GetirAdminOlmayanlarHamisi()
-        {
-            return _appUserDal.GetirAdminOlmayanlarHamisi();
-        }
+       
 
         public List<DualHelper> GetirEnCoxIsdeIsleyenIstifadeciler()
         {
