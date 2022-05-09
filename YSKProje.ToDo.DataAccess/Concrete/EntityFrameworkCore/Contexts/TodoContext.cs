@@ -12,9 +12,9 @@ namespace YSKProje.ToDo.DataAccess.Concrete.EntityFrameworkCore.Contexts
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=DESKTOP-S2IRCOD; database=WorkManager; integrated security=true;");
+            optionsBuilder.UseSqlServer("server=DESKTOP-S2IRCOD; database=udemyBlogToDo; integrated security=true;");
 
-            base.OnConfiguring(optionsBuilder);
+            base.OnConfiguring(optionsBuilder); 
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
